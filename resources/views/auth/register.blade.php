@@ -28,8 +28,8 @@
                         <div class="text-center mt-4">
                             <div class="mb-3">
                                 <a href="index.html" class="auth-logo">
-                                    <img src="assets/images/logo-dark.png" height="30" class="logo-dark mx-auto" alt="">
-                                    <img src="assets/images/logo-light.png" height="30" class="logo-light mx-auto" alt="">
+                                    <img src="{{ asset('backend/assets/images/logo-dark.png') }}" height="30" class="logo-dark mx-auto" alt="">
+                                    <img src="{{ asset('backend/assets/images/logo-light.png') }}" height="30" class="logo-light mx-auto" alt="">
                                 </a>
                             </div>
                         </div>
@@ -42,30 +42,42 @@
     
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">
-                                        <input class="form-control" type="text" required="" placeholder="Email">
+                                        <input id="name" name="name" class="form-control" type="text" required="" placeholder="Name" :value="old('name')">
                                     </div>
                                 </div>
     
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">
-                                        <input class="form-control" type="text" required="" placeholder="Username">
+                                        <input id="username" name="username" class="form-control" type="text" required="" placeholder="Username">
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3 row">
+                                    <div class="col-12">
+                                        <input id="email" name="email" class="form-control" type="email" required="" placeholder="Email">
                                     </div>
                                 </div>
     
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">
-                                        <input class="form-control" type="password" required="" placeholder="Password">
+                                        <input id="password" name="password" class="form-control" type="password" required="" placeholder="Password">
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-3 row">
+                                    <div class="col-12">
+                                        <input id="password_confirmation" name="password_confirmation" class="form-control" type="password" required="" placeholder="Password Confirmation">
                                     </div>
                                 </div>
     
-                                <div class="form-group mb-3 row">
+                                <!-- <div class="form-group mb-3 row">
                                     <div class="col-12">
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="customCheck1">
                                             <label class="form-label ms-1 fw-normal" for="customCheck1">I accept <a href="#" class="text-muted">Terms and Conditions</a></label>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
     
                                 <div class="form-group text-center row mt-3 pt-1">
                                     <div class="col-12">
