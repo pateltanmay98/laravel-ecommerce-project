@@ -11,7 +11,8 @@
 
                         <h4 class="card-title">Edi Profile Page</h4>
 
-                        <form>
+                        <form method="POST" action="{{ route('store.profile') }}" enctype="multipart/form-data">
+                            @csrf
 
                             <div class="row mb-3">
                                 <label for="name" class="col-sm-2 col-form-label">Name</label>
