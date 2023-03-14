@@ -38,7 +38,7 @@
                             <div class="row mb-3">
                                 <label for="image" class="col-sm-2 col-form-label">Profile Image</label>
                                 <div class="col-sm-10">
-                                    <input name="user_image" class="form-control" type="file" id="userimage">
+                                    <input name="user_image" class="form-control" type="file" id="user_image">
                                 </div>
                             </div> <!-- end row -->
 
