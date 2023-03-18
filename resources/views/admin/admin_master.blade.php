@@ -25,6 +25,9 @@
         <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
         <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+        <!-- Toastr message CSS  -->
+        <!-- https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css -->
+        <link href="{{ asset('backend/assets/css/toastr.css') }}" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
 
@@ -84,8 +87,36 @@
 
         <script src="{{ asset('backend/assets/js/pages/dashboard.init.js') }}"></script>
 
+        <!-- https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js -->
+        <script src="{{ asset('backend/assets/js/pages/toastr.min.js') }}"></script>
+
         <!-- App js -->
         <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+
+        <script>
+            @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+
+            switch(type){
+                case 'info':
+                    toastr.info(" {{ Session::get('message') }} ");
+                    breaak;
+                
+                case 'success':
+                    toastr.success(" {{ Session::get('message') }} ");
+                    breaak;
+
+                case 'error':
+                    toastr.error(" {{ Session::get('message') }} ");
+                    breaak;
+
+                case 'warning':
+                    toastr.warning(" {{ Session::get('message') }} ");
+                    breaak;
+            }
+            @endif
+        </script>
+
     </body>
 
 </html>

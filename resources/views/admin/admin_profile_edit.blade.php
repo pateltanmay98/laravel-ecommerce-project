@@ -45,7 +45,7 @@
                             <div class="row mb-3">
                                 <label for="image" class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-10">
-                                    <img id="display_image" class="rounded avatar-lg" src="{{ asset('backend/assets/images/small/img-5.jpg') }}" alt="Card image cap">
+                                    <img id="display_image" class="rounded avatar-lg" src="{{ (!empty($editData->profile_image)) ? url('storage/profile/'.$editData->profile_image) : url('storage/profile/single_user.png') }}" alt="Card image cap">
                                 </div>
                             </div> <!-- end row -->
 
