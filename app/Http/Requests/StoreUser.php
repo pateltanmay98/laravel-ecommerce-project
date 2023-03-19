@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreUser extends FormRequest
 {
@@ -26,7 +27,7 @@ class StoreUser extends FormRequest
         return [
             'name' => 'required',
             'username' => 'required|min:8',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users,email,'.$this->user()->id,
             'user_image' => 'image|mimes:jpeg,png,gif,jpg|max:100'
         ];
     }
@@ -42,19 +43,7 @@ class StoreUser extends FormRequest
             'name.required' => 'Name is required!',
             'email.required' => 'Email is required!',
             'username.required' => 'Username is required!',
-        ];
-    }
-
-    /**
-     *  Filters to be applied to the input.
-     *
-     * @return array
-     */
-    public function filters()
-    {
-        return [
-            'email' => 'trim|lowercase',
-            'name' => 'trim|capitalize|escape'
+            'email.email' => 'Email field must be email address.'
         ];
     }
 }

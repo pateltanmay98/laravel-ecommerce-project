@@ -19,6 +19,9 @@
                                 <div class="col-sm-10">
                                     <input name="name" class="form-control" type="text" value="{{ $editData->name }}" id="name">
                                 </div>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @endif
                             </div> <!-- end row -->
 
                             <div class="row mb-3">
@@ -26,6 +29,9 @@
                                 <div class="col-sm-10">
                                     <input name="email" class="form-control" type="email" value="{{ $editData->email }}" id="email">
                                 </div>
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
                             </div> <!-- end row -->
 
                             <div class="row mb-3">
@@ -33,6 +39,9 @@
                                 <div class="col-sm-10">
                                     <input name="username" class="form-control" type="text" value="{{ $editData->username }}" id="username">
                                 </div>
+                                @if ($errors->has('username'))
+                                    <span class="text-danger">{{ $errors->first('username') }}</span>
+                                @endif
                             </div> <!-- end row -->
 
                             <div class="row mb-3">
@@ -40,6 +49,9 @@
                                 <div class="col-sm-10">
                                     <input name="user_image" class="form-control" type="file" id="user_image">
                                 </div>
+                                @if ($errors->has('user_image'))
+                                    <span class="text-danger">{{ $errors->first('user_image') }}</span>
+                                @endif
                             </div> <!-- end row -->
 
                             <div class="row mb-3">
