@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Requests\StoreUser;
+use App\Http\Requests\Auth\UpdatePassword;
 
 class AdminController extends Controller
 {
@@ -71,4 +72,12 @@ class AdminController extends Controller
 
         return redirect()->route('admin.profile')->with($notification);
     }
+
+    public function changePassword()
+    {
+        return view('admin.admin_change_password');
+    }
+
+    public function updatePassword(UpdatePassword $request)
+    {}
 }
