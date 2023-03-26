@@ -79,5 +79,7 @@ class AdminController extends Controller
     }
 
     public function updatePassword(UpdatePassword $request)
-    {}
+    {
+        dd('Hello');
+    }
 }

@@ -24,10 +24,10 @@ class StoreUser extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'username' => 'required|min:8',
-            'email' => 'required|email|unique:users,email,'.$this->user()->id,
-            'user_image' => 'image|mimes:jpeg,png,gif,jpg|max:100'
+            'name' => ['required'],
+            'username' => ['required|min:8'],
+            'email' => ['required|email|unique:users,email,'.$this->user()->id],
+            'user_image' => ['image|mimes:jpeg,png,gif,jpg|max:100']
         ];
     }
 

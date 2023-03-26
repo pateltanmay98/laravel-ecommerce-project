@@ -25,6 +25,7 @@ class UpdatePassword extends FormRequest
     public function rules()
     {
         return [
+            'current_password' => ['required','current_password'],
             'new_password' => [
                 'required',
                 Password::min(8)
@@ -32,9 +33,10 @@ class UpdatePassword extends FormRequest
                     ->mixedCase()
                     ->numbers()
                     ->symbols()
-                    ->uncompromised()
+                    ->uncompromised(),
+                    'different:current_password'
             ],
-            'confirm_password' => 'required|same:password'
+            'confirm_password' => ['required_with:new_password']
         ];
     }
 
@@ -46,6 +48,7 @@ class UpdatePassword extends FormRequest
     public function messages()
     {
         return [
+            'new_password.*' => 'Password required Uppercase, Lowercase, Numbers, Symbols!'
         ];
     }
 }
