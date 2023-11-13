@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
-use App\Http\Requests\StoreUser;
+use App\Http\Requests\ProcessUserRequest;
 use App\Http\Requests\Auth\UpdatePassword;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -43,7 +44,7 @@ class AdminController extends Controller
         return view('admin.admin_profile_edit', compact('editData'));
     }
 
-    public function storeProfile(StoreUser $request)
+    public function storeProfile(ProcessUserRequest $request)
     {
         $id = Auth::user()->id;
         $data = User::find($id);
@@ -58,7 +59,8 @@ class AdminController extends Controller
             $ext = $file->extension();
 
             $filename = date('YmdHis').rand(10,1000).'.'.$ext;
-
+            
+            // Store image at storage/app/public/profile folder
             $file->storeAs('public/profile', $filename);
             $data['profile_image'] = $filename;
         }
@@ -80,6 +82,14 @@ class AdminController extends Controller
 
     public function updatePassword(UpdatePassword $request)
     {
+
+        $hashedPassword = Auth::user()->password;
+
+        if(Hash::check($request->current_password, $hashedPassword)) {
+            $user = User::find(Auth::id());
+            $user->password = bcrypt($request->new_password);
+        }
+
         dd('Hello');
     }
 }

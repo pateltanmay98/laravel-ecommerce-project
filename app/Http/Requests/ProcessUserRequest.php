@@ -4,14 +4,12 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreUser extends FormRequest
+class ProcessUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -19,15 +17,15 @@ class StoreUser extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, mixed>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules()
     {
         return [
             'name' => ['required'],
-            'username' => ['required|min:8'],
-            'email' => ['required|email|unique:users,email,'.$this->user()->id],
-            'user_image' => ['image|mimes:jpeg,png,gif,jpg|max:100']
+            'username' => ['required', 'min:8'],
+            'email' => ['required', 'email', 'unique:users,email,' . $this->user()->id],
+            'user_image' => ['image', 'mimes:jpeg,png,gif,jpg']
         ];
     }
 

@@ -20,3 +20,4 @@ yarn-error.log
 /public/backend
 /public/assets
 .htaccess
+composer.lock
