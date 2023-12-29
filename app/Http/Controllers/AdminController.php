@@ -53,13 +53,12 @@ class AdminController extends Controller
         $data->email = $request->email;
         $data->username = $request->username;
 
-        if($request->hasFile('user_image'))
-        {
+        if ($request->hasFile('user_image')) {
             $file = $request->file('user_image');
             $ext = $file->extension();
 
-            $filename = date('YmdHis').rand(10,1000).'.'.$ext;
-            
+            $filename = date('YmdHis') . rand(10, 1000) . '.' . $ext;
+
             // Store image at storage/app/public/profile folder
             $file->storeAs('public/profile', $filename);
             $data['profile_image'] = $filename;
@@ -82,14 +81,26 @@ class AdminController extends Controller
 
     public function updatePassword(UpdatePassword $request)
     {
-
         $hashedPassword = Auth::user()->password;
 
-        if(Hash::check($request->current_password, $hashedPassword)) {
-            $user = User::find(Auth::id());
-            $user->password = bcrypt($request->new_password);
+        if (!Hash::check($request->current_password, $hashedPassword)) {
+            $notification = [
+                'message' => 'Current password does not match!',
+                'alert-type' => 'error',
+            ];
+
+            return redirect()->route('change.password')->with($notification);
         }
 
-        dd('Hello');
+        $user = User::find(Auth::id());
+        $user->password = bcrypt($request->new_password); // Ensure to hash the new password
+        $user->save(); // Save the user model
+
+        $notification = [
+            'message' => 'Password updated successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('change.password')->with($notification);
     }
 }

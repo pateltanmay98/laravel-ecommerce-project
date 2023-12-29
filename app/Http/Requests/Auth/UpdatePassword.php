@@ -4,6 +4,7 @@ namespace App\Http\Requests\Auth;
 
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\MatchOldPassword;
 
 class UpdatePassword extends FormRequest
 {
@@ -25,7 +26,7 @@ class UpdatePassword extends FormRequest
     public function rules()
     {
         return [
-            'current_password' => ['required','current_password'],
+            'current_password' => ['required', new MatchOldPassword],
             'new_password' => [
                 'required',
                 Password::min(8)
@@ -34,9 +35,9 @@ class UpdatePassword extends FormRequest
                     ->numbers()
                     ->symbols()
                     ->uncompromised(),
-                    'different:current_password'
+                'different:current_password'
             ],
-            'confirm_password' => ['required_with:new_password']
+            'confirm_password' => ['required_with:new_password', 'same:new_password'],
         ];
     }
 
@@ -48,7 +49,8 @@ class UpdatePassword extends FormRequest
     public function messages()
     {
         return [
-            'new_password.*' => 'Password required Uppercase, Lowercase, Numbers, Symbols!'
+            'new_password.*' => 'Password required Uppercase, Lowercase, Numbers, Symbols!',
+            'confirm_password.same' => 'The new password and confirmation password must match.',
         ];
     }
 }

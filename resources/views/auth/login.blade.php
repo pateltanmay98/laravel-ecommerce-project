@@ -48,12 +48,18 @@
                                         <input id="email" name="email" class="form-control" type="text" required="" placeholder="Email">
                                     </div>
                                 </div>
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
     
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">
                                         <input id="password" name="password" class="form-control" type="password" required="" placeholder="Password">
                                     </div>
                                 </div>
+                                @if ($errors->has('password'))
+                                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                                @endif
     
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">

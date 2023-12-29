@@ -45,30 +45,45 @@
                                         <input id="name" name="name" class="form-control" type="text" required="" placeholder="Name" :value="old('name')">
                                     </div>
                                 </div>
+                                @if ($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @endif
     
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">
                                         <input id="username" name="username" class="form-control" type="text" required="" placeholder="Username">
                                     </div>
                                 </div>
+                                @if ($errors->has('username'))
+                                    <span class="text-danger">{{ $errors->first('username') }}</span>
+                                @endif
 
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">
                                         <input id="email" name="email" class="form-control" type="email" required="" placeholder="Email">
                                     </div>
                                 </div>
+                                @if ($errors->has('email'))
+                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @endif
     
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">
                                         <input id="password" name="password" class="form-control" type="password" required="" placeholder="Password">
                                     </div>
                                 </div>
+                                @if ($errors->has('password'))
+                                    <span class="text-danger">{{ $errors->first('password') }}</span>
+                                @endif
 
                                 <div class="form-group mb-3 row">
                                     <div class="col-12">
                                         <input id="password_confirmation" name="password_confirmation" class="form-control" type="password" required="" placeholder="Password Confirmation">
                                     </div>
                                 </div>
+                                @if ($errors->has('password_confirmation'))
+                                    <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
+                                @endif
     
                                 <!-- <div class="form-group mb-3 row">
                                     <div class="col-12">
