@@ -18,6 +18,7 @@ yarn-error.log
 /.idea
 /.vscode
 /public/backend
+/public/frontend
 /public/assets
 .htaccess
 composer.lock
