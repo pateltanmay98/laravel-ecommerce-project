@@ -44,14 +44,9 @@
         </main>
         <!-- main-area-end -->
 
-
-
         <!-- Footer-area -->
         @include('frontend.body.footer')
         <!-- Footer-area-end -->
-
-
-
 
 		<!-- JS here -->
         <script src="{{ asset('frontend/js/vendor/jquery-3.6.0.min.js') }}"></script>
