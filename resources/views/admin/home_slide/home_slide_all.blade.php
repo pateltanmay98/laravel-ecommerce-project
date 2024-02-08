@@ -15,53 +15,53 @@
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                                <label for="title" class="col-sm-2 col-form-label">Title</label>
                                 <div class="col-sm-10">
-                                    <input name="name" class="form-control" type="text" value="{{ $editData->name }}" id="name">
+                                    <input name="title" class="form-control" type="text" value="{{ $homeSlide->title }}" id="title">
                                 </div>
-                                @if ($errors->has('name'))
-                                    <span class="text-danger">{{ $errors->first('name') }}</span>
+                                @if ($errors->has('title'))
+                                    <span class="text-danger">{{ $errors->first('title') }}</span>
                                 @endif
                             </div> <!-- end row -->
 
                             <div class="row mb-3">
-                                <label for="email" class="col-sm-2 col-form-label">User Email</label>
+                                <label for="short_title" class="col-sm-2 col-form-label">Short Title</label>
                                 <div class="col-sm-10">
-                                    <input name="email" class="form-control" type="email" value="{{ $editData->email }}" id="email">
+                                    <input name="short_title" class="form-control" type="text" value="{{ $homeSlide->short_title }}" id="short_title">
                                 </div>
-                                @if ($errors->has('email'))
-                                    <span class="text-danger">{{ $errors->first('email') }}</span>
+                                @if ($errors->has('short_title'))
+                                    <span class="text-danger">{{ $errors->first('short_title') }}</span>
                                 @endif
                             </div> <!-- end row -->
 
                             <div class="row mb-3">
-                                <label for="username" class="col-sm-2 col-form-label">Username</label>
+                                <label for="video_url" class="col-sm-2 col-form-label">Video URL</label>
                                 <div class="col-sm-10">
-                                    <input name="username" class="form-control" type="text" value="{{ $editData->username }}" id="username">
+                                    <input name="video_url" class="form-control" type="text" value="{{ $homeSlide->video_url }}" id="video_url">
                                 </div>
-                                @if ($errors->has('username'))
-                                    <span class="text-danger">{{ $errors->first('username') }}</span>
+                                @if ($errors->has('video_url'))
+                                    <span class="text-danger">{{ $errors->first('video_url') }}</span>
                                 @endif
                             </div> <!-- end row -->
 
                             <div class="row mb-3">
-                                <label for="image" class="col-sm-2 col-form-label">Profile Image</label>
+                                <label for="home_slide" class="col-sm-2 col-form-label">Slider Image</label>
                                 <div class="col-sm-10">
-                                    <input name="user_image" class="form-control" type="file" id="user_image">
+                                    <input name="home_slide" class="form-control" type="file" id="home_slide" value="{{ $homeSlide }}">
                                 </div>
-                                @if ($errors->has('user_image'))
-                                    <span class="text-danger">{{ $errors->first('user_image') }}</span>
+                                @if ($errors->has('home_slide'))
+                                    <span class="text-danger">{{ $errors->first('home_slide') }}</span>
                                 @endif
                             </div> <!-- end row -->
 
                             <div class="row mb-3">
                                 <label for="image" class="col-sm-2 col-form-label"></label>
                                 <div class="col-sm-10">
-                                    <img id="display_image" class="rounded avatar-lg" src="{{ (!empty($editData->profile_image)) ? url('storage/profile/'.$editData->profile_image) : url('storage/profile/single_user.png') }}" alt="Card image cap">
+                                    <img id="display_image" class="rounded avatar-lg" src="{{ (!empty($homeSlide->home_slide)) ? url('storage/home_slider/'.$homeSlide->home_slide) : url('storage/no_image.jpg') }}" alt="Card image cap">
                                 </div>
                             </div> <!-- end row -->
 
-                            <input type="submit" class="btn btn-info waves-effect" value="Update Profile">
+                            <input type="submit" class="btn btn-info waves-effect" value="Update Slider">
 
                         </form>
 

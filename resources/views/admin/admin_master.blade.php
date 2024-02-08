@@ -92,6 +92,9 @@
 
         <!-- App js -->
         <script src="{{ asset('backend/assets/js/app.js') }}"></script>
+
+        @yield('custom-scripts')
+
         <script>
             @if(Session::has('message'))
                 var type = "{{ Session::get('alert-type', 'info') }}"
